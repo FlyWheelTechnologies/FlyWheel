@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Smooth scroll for anchor links */
+html:focus-within {
+scroll-behavior: smooth;
+}
+
+
+/* Prevent iOS bounce revealing background */
+body {
+@apply bg-black text-white;
+overscroll-behavior-y: none;
+}
+
+
+/* Utility: mask top/bottom edges when using sticky navs (optional) */
+.edge-fade::before,
+.edge-fade::after {
+content: "";
+position: sticky;
+height: 24px;
+left: 0;
+right: 0;
+z-index: 10;
+}
+.edge-fade::before { top: 0; background: linear-gradient(180deg, rgba(0,0,0,.8), transparent); }
+.edge-fade::after { bottom: 0; background: linear-gradient(0deg, rgba(0,0,0,.8), transparent); }
