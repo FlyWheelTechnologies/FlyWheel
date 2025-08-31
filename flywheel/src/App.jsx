@@ -24,7 +24,7 @@ const SECTIONS = [
   { 
     id: "work", 
     label: "Work", 
-    bg: "bg-gray-400", 
+    bg: "bg-gray-900", 
     component: WorkSection 
   },
   { 
