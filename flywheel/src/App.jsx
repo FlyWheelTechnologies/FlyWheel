@@ -17,7 +17,7 @@ const { activeId, register } = useActiveSection(SECTIONS.map(s => s.id));
 
 
 return (
-<div className="relative h-screen w-screen overflow-hidden bg-black">
+<div className="relative h-screen w-screen overflow-hidden from-bg-black via-bg-blue-900 to-bg-black text-white">
 {/* Snap container: vertical, mandatory snapping */}
 <main
 className="h-screen w-full overflow-y-scroll snap-y snap-mandatory edge-fade"
