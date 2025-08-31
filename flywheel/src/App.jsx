@@ -18,13 +18,13 @@ const SECTIONS = [
   { 
     id: "about", 
     label: "About", 
-    bg: "from-slate-900 via-slate-800 to-slate-900", 
+    bg: "from-orange-900 via-orange-800 to-orange-900", 
     component: AboutSection 
   },
   { 
     id: "work", 
     label: "Work", 
-    bg: "from-indigo-950 via-indigo-900 to-indigo-950", 
+    bg: "bg-gray-400", 
     component: WorkSection 
   },
   { 
@@ -39,7 +39,7 @@ export default function App() {
   const { activeId, register } = useActiveSection(SECTIONS.map(s => s.id));
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden from-bg-black via-bg-blue-900 to-bg-black text-white">
+    <div className="relative h-screen w-screen overflow-hidden from-bg-black via-bg-blue-900 to-bg-black ">
       {/* Frosted Glass Navbar */}
       <Navbar sections={SECTIONS} activeId={activeId} />
       

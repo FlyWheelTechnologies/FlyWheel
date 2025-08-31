@@ -70,7 +70,7 @@ export default function Navbar({ sections, activeId }) {
             <div className="hidden md:block">
               <button
                 onClick={() => scrollToSection('contact')}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 text-cyan-300 hover:text-cyan-200 font-medium transition-all duration-300 border border-cyan-400/20 backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500/20 to-orange-500/20 hover:from-orange-500/40 hover:to-orange-400/30 text-white-300 hover:text-white font-medium transition-all duration-300 border border-orange-500/20 backdrop-blur-sm"
               >
                 <span>Contact</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
