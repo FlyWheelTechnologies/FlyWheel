@@ -7,4 +7,8 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
+  base: '/FlyWheel/', // Replace with your exact repo name
+  build: {
+    outDir: 'dist'
+  }
 })
