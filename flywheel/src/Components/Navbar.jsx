@@ -41,7 +41,7 @@ export default function Navbar({ sections, activeId }) {
               <img src={Logo} alt="Logo" className='w-10 h-10' />
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-lg font-semibold text-white hover:text-orange-400 transition-colors"
+                className="text-lg  font-semibold text-white hover:text-orange-400 transition-colors"
               >
                 FlyWheelTechnologies
               </button>

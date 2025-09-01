@@ -1,19 +1,18 @@
-// components/sections/ContactSection.js
 export default function ContactSection() {
   return (
-    <div className="relative z-10 h-full w-full flex flex-col items-center justify-center gap-8 p-6 pt-20 text-center">
-      <h1 className="text-5xl md:text-7xl font-black tracking-tight">
+    <div className="relative z-10 h-full w-full flex flex-col items-center justify-start gap-6 sm:gap-8 p-4 sm:p-6 pt-25 sm:pt-25 text-center">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight">
         Get In Touch
       </h1>
       <div className="max-w-2xl space-y-6">
-        <p className="text-xl text-white/80">
+        <p className="text-lg sm:text-xl text-white/80">
           Ready to bring your next project to life? Let's collaborate.
         </p>
         
         {/* Contact methods */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-20">
           <a 
-            href="mailto:hello@yourname.com"
+            href="mailto:princetetteh963@gmail.com"
             className="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-teal-600/20 hover:bg-teal-600/30 ring-1 ring-teal-400/20 backdrop-blur transition-colors"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -47,7 +46,7 @@ export default function ContactSection() {
       
       <a 
         href="#home" 
-        className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white/10 hover:bg-white/15 ring-1 ring-white/20 backdrop-blur"
+        className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white/10 hover:bg-white/15 ring-1 ring-white/20 backdrop-blur mt-25"
       >
         <span>Back to Top</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>

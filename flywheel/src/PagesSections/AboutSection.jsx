@@ -1,4 +1,3 @@
-// components/sections/AboutSection.js
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 export default function AboutSection() {
@@ -55,17 +54,17 @@ export default function AboutSection() {
   const activeService = services.find((s) => s.id === active);
 
   return (
-    <div className="relative z-10 h-full w-full flex flex-col items-center justify-center gap-8 p-6 pt-20 text-center">
-      <h1 className="text-5xl md:text-7xl font-black tracking-tight">What We Do</h1>
+    <div className="relative z-10 h-full w-full flex flex-col items-center justify-start gap-6 sm:gap-8 p-4 sm:p-6 sm:pt-20  pt-23 text-center">
+      <h1 className="text-5xl sm:text-5xl md:text-7xl font-black tracking-tight">What We Do</h1>
 
       <div className="max-w-2xl space-y-4">
-        <p className="text-x text-white/80">
-         Flywheel Technologies is an innovation hub building  AI-powered solutions tailored for enterprises and SMEs in Ghana, with a strong focus on modernizing traditional business operations. We help organisations digitize processes like inventory tracking, record-keeping, data management, and client interactions and  provide scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive business growth
+        <p className="text-base sm:text-lg text-white/80">
+         Flywheel Technologies is an innovation hub building AI-powered solutions tailored for enterprises and SMEs in Ghana, with a strong focus on modernizing traditional business operations. We help organisations digitize processes like inventory tracking, record-keeping, data management, and client interactions and provide scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive business growth
         </p>
       </div>
 
       {/* Clickable Service Cards (no inline expansion) */}
-      <div className="w-full max-w-4xl space-y-4 mt-8">
+      <div className="w-full max-w-4xl space-y-3 sm:space-y-4 mt-6 sm:mt-8">
         {services.map((service) => (
           <button
             key={service.id}
@@ -74,9 +73,9 @@ export default function AboutSection() {
             aria-haspopup="dialog"
             aria-controls="service-modal"
           >
-            <div className="p-6 flex items-center justify-between">
-              <h3 className="text-xl font-semibold">{service.title}</h3>
-              <div className="text-2xl font-light">+</div>
+            <div className="p-4 sm:p-6 flex items-center justify-between">
+              <h3 className="text-lg sm:text-xl font-semibold">{service.title}</h3>
+              <div className="text-xl sm:text-2xl font-light">+</div>
             </div>
           </button>
         ))}
@@ -107,7 +106,7 @@ export default function AboutSection() {
           >
             <div className="p-5">
               <div className="flex items-start justify-between gap-4">
-                <h2 id="service-modal-title" className="text-2xl font-bold">
+                <h2 id="service-modal-title" className="text-xl sm:text-2xl font-bold">
                   {activeService.title}
                 </h2>
                 <button
@@ -128,7 +127,7 @@ export default function AboutSection() {
                 </button>
               </div>
 
-              <p className="mt-4 text-white/80 leading-relaxed">{activeService.content}</p>
+              <p className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed">{activeService.content}</p>
 
               <div className="mt-6 flex justify-end">
                 <button
