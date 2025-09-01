@@ -5,7 +5,7 @@ export default function HomeSection() {
   return (
     <>
       <ThreeBackground />
-      <div className="relative z-10 h-full w-full flex flex-col justify-start p-4 sm:p-6 pt-25 sm:pt-20 lg:pt-50 bg-black/50 backdrop-blur-sm">
+      <div className="relative z-10 h-full w-full flex flex-col justify-start p-4 sm:p-6 pt-22 sm:pt-20 lg:pt-50 bg-black/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           
           {/* Left Column - Hero Text */}
