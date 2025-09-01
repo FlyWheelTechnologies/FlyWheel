@@ -10,7 +10,7 @@ return (
 <ambientLight intensity={0.5} />
 <Suspense fallback={null}>
 <Environment preset="city" />
-<Float speed={2.5} rotationIntensity={0.5} floatIntensity={1.5}>
+<Float speed={6.5} rotationIntensity={0.5} floatIntensity={1.5}>
 <SpinningTorus />
 </Float>
 </Suspense>
