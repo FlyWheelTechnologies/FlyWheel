@@ -18,13 +18,13 @@ const SECTIONS = [
   { 
     id: "about", 
     label: "About", 
-    bg: "from-orange-900 via-orange-800 to-orange-900", 
+    bg: "from-orange-400 via-orange-600 to-orange-800", 
     component: AboutSection 
   },
   { 
     id: "work", 
     label: "Work", 
-    bg: "bg-gray-900", 
+    bg: "from-black via-orange-900 to-black", 
     component: WorkSection 
   },
   { 

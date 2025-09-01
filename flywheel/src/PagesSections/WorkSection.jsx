@@ -1,9 +1,9 @@
 // components/sections/WorkSection.js
 export default function WorkSection() {
   return (
-    <div className="relative z-10 h-full w-full flex flex-col items-center justify-center gap-8 p-6 pt-20 text-center">
+    <div className="relative z-10 h-full w-full flex flex-col items-center justify-center gap-8 p-6 pt-10 text-center">
       <h1 className="text-5xl md:text-7xl font-black tracking-tight">
-        My Work
+        Our Work
       </h1>
       <div className="max-w-4xl space-y-6">
         <p className="text-xl text-white/80">
@@ -13,7 +13,7 @@ export default function WorkSection() {
         {/* Sample project grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
           <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur">
-            <h3 className="text-xl font-semibold mb-2">3D Portfolio</h3>
+            <h3 className="text-xl font-semibold mb-2">Web Apps</h3>
             <p className="text-white/70">Interactive Three.js portfolio with immersive navigation.</p>
           </div>
           <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur">

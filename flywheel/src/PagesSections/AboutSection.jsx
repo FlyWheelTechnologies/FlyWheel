@@ -81,23 +81,6 @@ export default function AboutSection() {
           </button>
         ))}
       </div>
-
-      <a
-        href="#work"
-        className="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white/10 hover:bg-white/15 ring-1 ring-white/20 backdrop-blur"
-      >
-        <span>View My Work</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path
-            d="M7 10l5 5 5-5"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </a>
-
       {/* Frosted Glass Modal */}
       {activeService && (
         <div
@@ -122,7 +105,7 @@ export default function AboutSection() {
             // trigger the animation on mount
             data-state="open"
           >
-            <div className="p-6">
+            <div className="p-5">
               <div className="flex items-start justify-between gap-4">
                 <h2 id="service-modal-title" className="text-2xl font-bold">
                   {activeService.title}

@@ -5,13 +5,13 @@ export default function HomeSection() {
   return (
     <>
       <ThreeBackground />
-      <div className="relative z-10 h-full w-full flex flex-col justify-center p-6 pt-20">
+      <div className="relative z-10 h-full w-full flex flex-col justify-center p-6 pt-20 bg-black/50 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Column - Hero Text */}
-          <div className="space-y-6">
+          <div className="space-y-6 ">
             <div className="space-y-1">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-shadow-black">
                 Design
               </h1>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-orange-400">
