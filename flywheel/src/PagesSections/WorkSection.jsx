@@ -199,7 +199,7 @@ export default function WorkSection() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="project-modal-title"
-          className="fixed inset-0 z-50 flex lg:justify-center pt-25 pb-25 sm:pt-25 sm:pb-25 p-4 lg:mb-20 mb-43"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
         >
           {/* Backdrop */}
           <div
