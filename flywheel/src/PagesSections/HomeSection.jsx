@@ -64,7 +64,7 @@ export default function HomeSection() {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-white/10 hover:bg-white/20 ring-1 ring-white/30 backdrop-blur-sm text-white font-medium transition-all duration-300"
               >
-                <span>Start Project</span>
+                <span>Book A Demo</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
                   <path
                     d="M5 12h14M12 5l7 7-7 7"
