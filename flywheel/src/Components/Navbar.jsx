@@ -43,7 +43,7 @@ export default function Navbar({ sections, activeId }) {
                 onClick={() => scrollToSection('home')}
                 className="text-lg  font-semibold text-white hover:text-orange-400 transition-colors"
               >
-                FlyWheelTechnologies
+                Flywheel Technologies
               </button>
             </div>
 
@@ -66,20 +66,7 @@ export default function Navbar({ sections, activeId }) {
               </div>
             </div>
 
-            {/* Contact button */}
-            <div className="hidden md:block">
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500/20 to-orange-500/20 hover:from-orange-500/40 hover:to-orange-400/30 text-white-300 hover:text-white font-medium transition-all duration-300 border border-orange-500/20 backdrop-blur-sm"
-              >
-                <span>Contact</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M9 9h.01M15 9h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </button>
-            </div>
+
 
             {/* Mobile menu button */}
             <div className="md:hidden">

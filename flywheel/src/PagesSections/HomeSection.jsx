@@ -1,83 +1,121 @@
 // components/sections/HomeSection.js
+"use client"; // Required if using Next.js App Router with Framer Motion
+
 import ThreeBackground from "../Components/ThreeBackground";
+import { motion } from "framer-motion";
 
 export default function HomeSection() {
+  // Animation variants for staggering elements
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15, // Delays each child by 0.15s
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    },
+  };
+
   return (
     <>
       <ThreeBackground />
-      <div className="relative z-10 h-full w-full flex flex-col justify-start p-4 sm:p-6 pt-22 sm:pt-20 lg:pt-50 bg-black/50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          
+      
+      {/* Changes: 
+        1. Added distinct gradient overlay (to-b from-transparent to-black) for better text readability at the bottom.
+        2. Added overflow-hidden to prevent scroll issues.
+      */}
+      <div className="relative z-10 h-full w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black/40 backdrop-blur-[2px]">
+        
+        {/* Main Container */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 lg:py-0 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+        >
+
           {/* Left Column - Hero Text */}
-          <div className="space-y-4 sm:space-y-6 ">
-            <div className="space-y-1 mb-9">
-              <h1 className="text-6xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-shadow-black">
-                Design
-              </h1>
-              <h2 className="text-7xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none text-orange-400">
-                Develop
-              </h2>
-              <h3 className="text-7xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none">
-                Deploy
-              </h3>
-            </div>
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             
-            <div className="space-y-1">
-              <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
-                Flywheel Digital
+            {/* Status Pill - Adds "Startup Credibility" */}
+            <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                </span>
+                Accepting New Projects
+              </span>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="space-y-2">
+              {/* Semantic H1 with Gradient Text */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-white">
+                Turn Any Idea <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-600">
+                  Into a Working
+                </span> <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-600">
+                  Product.
+                </span>
+              </h1>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <h4 className="text-lg sm:text-xl font-medium text-white/80 max-w-lg mx-auto lg:mx-0">
+                Flywheel Technologies — The AI-Driven Product Studio
               </h4>
-              <p className="text-base sm:text-lg text-orange-300 font-medium">
-                AI-Driven Innovation Studio
+            </motion.div>
+          </div>
+
+          {/* Right Column - Description & CTAs */}
+          {/* Added a subtle glass card effect behind this text for better readability against complex 3D backgrounds */}
+          <motion.div 
+            variants={itemVariants}
+            className="space-y-8 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl"
+          >
+            <div className="space-y-4">
+              <p className="text-lg sm:text-xl text-white/90 leading-relaxed font-light">
+                We help founders and organizations transform concepts into clean, <span className="text-white font-semibold">production-ready software</span>.
+              </p>
+
+              <p className="text-base text-white/60 leading-relaxed">
+                From websites and apps to dashboards and internal tools, we design solutions that simplify work and help your brand scale effortlessly.
               </p>
             </div>
-          </div>
-          
-          {/* Right Column - Description */}
-          <div className="space-y-8 sm:space-y-8">
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed">
-              Building AI-powered tools to <span className="text-orange-400 font-semibold">modernize operations</span> for Ghanaian SMEs.
-            </p>
-            
-            <p className="text-base sm:text-lg text-white/70">
-              We help small businesses scale effortlessly with enterprise-grade software.
-            </p>
-            
+
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <a
-                href="#about"
-                className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-500 hover:from-orange-400 hover:to-red-500 text-white font-semibold transition-all duration-300 shadow-lg"
-              >
-                <span>Learn More</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <path
-                    d="M7 10l5 5 5-5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-              
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-white/10 hover:bg-white/20 ring-1 ring-white/30 backdrop-blur-sm text-white font-medium transition-all duration-300"
+                className="group relative inline-flex items-center justify-center gap-2 rounded-xl px-8 py-3.5 bg-orange-500 text-white font-semibold transition-all duration-300 hover:bg-orange-600 hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:-translate-y-0.5"
               >
-                <span>Book A Demo</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <path
-                    d="M5 12h14M12 5l7 7-7 7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                <span>Start Your Project</span>
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </a>
+
+              <a
+                href="#about"
+                className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-3.5 bg-white/5 hover:bg-white/10 ring-1 ring-white/20 text-white font-medium transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <span>View Our Work</span>
+              </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+
+        </motion.div>
       </div>
     </>
   );

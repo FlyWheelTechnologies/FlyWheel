@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 
 export default function AboutSection() {
   const [active, setActive] = useState(null);
@@ -8,18 +9,21 @@ export default function AboutSection() {
     {
       id: 'apps',
       title: 'Apps & Websites',
+      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>,
       content:
         "We design and build modern, intuitive apps and websites that don't just look good—they work hard for your business. From sleek customer-facing platforms to internal tools, we craft digital products that drive engagement and improve everyday operations.",
     },
     {
       id: 'consultation',
       title: 'Digital Consultation & Strategy',
+      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 3.07 1.63 5.64 4 6.69V20h6v-4.31c2.37-1.05 4-3.62 4-6.69a7 7 0 0 0-7-7z"></path></svg>,
       content:
         'We help businesses make sense of technology by offering tailored digital consultation. From identifying gaps in your systems to crafting strategies for growth, we guide you in choosing the right tools, platforms, and approaches to stay competitive in a fast-changing market.',
     },
     {
       id: 'solutions',
       title: 'Custom Business Solutions',
+      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>,
       content:
         'We develop AI-driven systems that automate data collection, optimize workflows, and streamline reporting to cut down manual work. Our solutions are designed to boost efficiency, reduce errors, and unlock valuable insights—so you can focus on growth while technology handles the heavy lifting.',
     },
@@ -55,29 +59,57 @@ export default function AboutSection() {
 
   return (
     <div className="relative z-10 h-full w-full flex flex-col items-center justify-start gap-6 sm:gap-8 p-4 sm:p-6 sm:pt-20  pt-23 text-center">
-      <h1 className="text-5xl sm:text-5xl md:text-7xl font-black tracking-tight">What We Do</h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight"
+      >
+        What We Do
+      </motion.h1>
 
-      <div className="max-w-2xl space-y-4">
-        <p className="text-base sm:text-lg text-white/80">
-         Flywheel Technologies is an innovation hub building AI-powered solutions tailored for enterprises and SMEs in Ghana, with a strong focus on modernizing traditional business operations. We help organisations digitize processes like inventory tracking, record-keeping, data management, and client interactions and provide scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive business growth
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+        className="max-w-2xl space-y-4"
+      >
+        <p className="text-lg sm:text-2xl text-white/80">
+          Flywheel Technologies is an innovation hub building AI-powered solutions tailored for enterprises and SMEs in Ghana, with a strong focus on modernizing traditional business operations. We help organisations digitize processes like inventory tracking, record-keeping, data management, and client interactions and provide scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive business growth
         </p>
-      </div>
+      </motion.div>
 
       {/* Clickable Service Cards (no inline expansion) */}
       <div className="w-full max-w-4xl space-y-3 sm:space-y-4 mt-6 sm:mt-8">
-        {services.map((service) => (
-          <button
+        {services.map((service, index) => (
+          <motion.button
             key={service.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 + (index * 0.1) }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => open(service.id)}
             className="w-full rounded-xl bg-white/5 border border-white/10 backdrop-blur transition-all duration-300 hover:bg-white/10 cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             aria-haspopup="dialog"
             aria-controls="service-modal"
           >
             <div className="p-4 sm:p-6 flex items-center justify-between">
-              <h3 className="text-lg sm:text-xl font-semibold">{service.title}</h3>
-              <div className="text-xl sm:text-2xl font-light">+</div>
+              <div className="flex items-center gap-4">
+                {service.icon}
+                <h3 className="text-xl sm:text-2xl font-semibold">{service.title}</h3>
+              </div>
+              <motion.div
+                className="text-2xl sm:text-3xl font-light"
+                whileHover={{ rotate: 90, transition: { duration: 0.3 } }}
+              >
+                +
+              </motion.div>
             </div>
-          </button>
+          </motion.button>
         ))}
       </div>
       {/* Frosted Glass Modal */}
@@ -106,7 +138,7 @@ export default function AboutSection() {
           >
             <div className="p-5">
               <div className="flex items-start justify-between gap-4">
-                <h2 id="service-modal-title" className="text-xl sm:text-2xl font-bold">
+                <h2 id="service-modal-title" className="text-2xl sm:text-3xl font-bold">
                   {activeService.title}
                 </h2>
                 <button
@@ -127,7 +159,7 @@ export default function AboutSection() {
                 </button>
               </div>
 
-              <p className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed">{activeService.content}</p>
+              <p className="mt-4 text-base sm:text-lg text-white/80 leading-relaxed">{activeService.content}</p>
 
               <div className="mt-6 flex justify-end">
                 <button
