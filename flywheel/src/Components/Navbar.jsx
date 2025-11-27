@@ -1,21 +1,56 @@
 // components/Navbar.js
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Logo from '../assets/FlywheelLogo.png'; // Ensure you have a logo image in the specified path
 
 export default function Navbar({ sections, activeId }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
-  // Track scroll to add background blur when scrolled
+  // Track scroll direction to hide/show navbar
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = document.querySelector('main')?.scrollTop || 0;
-      setIsScrolled(scrollTop > 20);
+    const mainElement = document.querySelector('main');
+    if (!mainElement) return;
+
+    let lastScrollY = mainElement.scrollTop;
+    let timeout;
+
+    // Hide navbar after 4 seconds of inactivity on load
+    const startTimeout = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        if (mainElement.scrollTop > 50) {
+          setIsHidden(true);
+        }
+      }, 4000);
     };
 
-    const mainElement = document.querySelector('main');
-    mainElement?.addEventListener('scroll', handleScroll);
-    return () => mainElement?.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = mainElement.scrollTop;
+      
+      // Show/hide based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true); // Scrolling down
+      } else {
+        setIsHidden(false); // Scrolling up
+      }
+      lastScrollY = currentScrollY;
+
+      // Manage background blur effect
+      setIsScrolled(currentScrollY > 20);
+      
+      // Reset inactivity timer on scroll
+      startTimeout();
+    };
+
+    mainElement.addEventListener('scroll', handleScroll);
+    startTimeout(); // Start initial timer
+
+    return () => {
+      mainElement.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeout);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -29,11 +64,20 @@ export default function Navbar({ sections, activeId }) {
   return (
     <>
       {/* Main Navbar */}
-      <nav className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 rounded-2xl ${
-        isScrolled 
-          ? 'bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl' 
-          : 'bg-white/5 backdrop-blur-md border border-white/10'
-      }`}>
+      <nav>
+      <motion.nav
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: '-120%' }, // Moves the nav completely out of view
+        }}
+        animate={isHidden ? 'hidden' : 'visible'}
+        transition={{ duration: 0.35, ease: 'easeInOut' }}
+        className={`fixed top-4 left-4 right-4 z-50 transition-colors duration-500 rounded-2xl ${
+          isScrolled
+            ? 'bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl'
+            : 'bg-white/5 backdrop-blur-md border border-white/10'
+        }`}
+      >
         <div className="px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
             {/* Logo with icon */}
@@ -126,7 +170,8 @@ export default function Navbar({ sections, activeId }) {
             ))}
           </div>
         </div>
+        </motion.nav>
       </nav>
     </>
-  );
-}
+  )
+};

@@ -41,11 +41,11 @@ export default function HomeSection() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-20 lg:py-0 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-2 lg:py-0 grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-20 items-center"
         >
 
           {/* Left Column - Hero Text */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+          <div className="space-y-6 sm:space-y-2 text-center lg:text-left">
             
             {/* Status Pill - Adds "Startup Credibility" */}
             <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
@@ -82,7 +82,7 @@ export default function HomeSection() {
           {/* Added a subtle glass card effect behind this text for better readability against complex 3D backgrounds */}
           <motion.div 
             variants={itemVariants}
-            className="space-y-8 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl"
+            className="space-y-1 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-5 backdrop-blur-md shadow-2xl"
           >
             <div className="space-y-4">
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed font-light">
@@ -90,7 +90,6 @@ export default function HomeSection() {
               </p>
 
               <p className="text-base text-white/60 leading-relaxed">
-                From websites and apps to dashboards and internal tools, we design solutions that simplify work and help your brand scale effortlessly.
               </p>
             </div>
 
