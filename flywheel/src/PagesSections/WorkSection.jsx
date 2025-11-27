@@ -167,7 +167,7 @@ export default function WorkSection() {
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-1">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

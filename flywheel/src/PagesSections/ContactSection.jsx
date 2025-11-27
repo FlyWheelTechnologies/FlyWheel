@@ -43,7 +43,7 @@ export default function ContactSection() {
           </a>
 
           <a 
-            href="https://wa.me/23320065732?text=Hi,%20I'd%20like%20to%20book%20a%20demo%20with%20flywheel%20technologies"
+            href="https://wa.me/233200645732?text=Hi,%20I'd%20like%20to%20book%20a%20demo%20with%20flywheel%20technologies"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-green-600/20 hover:bg-green-600/30 ring-1 ring-green-400/20 backdrop-blur transition-colors"

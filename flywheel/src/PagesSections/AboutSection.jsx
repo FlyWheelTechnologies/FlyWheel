@@ -77,12 +77,12 @@ export default function AboutSection() {
         className="max-w-2xl space-y-4"
       >
         <p className="text-lg sm:text-2xl text-white/80">
-          Flywheel Technologies is an innovation hub building AI-powered solutions tailored for enterprises and SMEs in Ghana, with a strong focus on modernizing traditional business operations. We help organisations digitize processes like inventory tracking, record-keeping, data management, and client interactions and provide scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive business growth
+          Flywheel Technologies is an innovation hub building AI-powered solutions for ambitious founders and SMEs, modernizing traditional business operations. We help organisations digitize processes, manage data and branding. Providing scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive growth
         </p>
       </motion.div>
 
       {/* Clickable Service Cards (no inline expansion) */}
-      <div className="w-full max-w-4xl space-y-3 sm:space-y-4 mt-6 sm:mt-8">
+      <div className="w-full max-w-4xl space-y-2 sm:space-y-4 mt-1 sm:mt-1">
         {services.map((service, index) => (
           <motion.button
             key={service.id}
