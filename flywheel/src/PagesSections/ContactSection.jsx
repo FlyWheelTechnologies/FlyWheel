@@ -27,7 +27,7 @@ export default function ContactSection() {
           </a>
           
           <a 
-            href="https://www.linkedin.com/company/flywheeltechnologies/"
+            href="https://linkedin.com/in/yourprofile"
             className="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-blue-600/20 hover:bg-blue-600/30 ring-1 ring-blue-400/20 backdrop-blur transition-colors"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
