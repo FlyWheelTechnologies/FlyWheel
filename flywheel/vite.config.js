@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
-  base: '/FlyWheel/', // Replace with your exact repo name
+  base: '/', // Custom domain: bookflywheel.com serves from root
   build: {
     outDir: 'dist'
   }
