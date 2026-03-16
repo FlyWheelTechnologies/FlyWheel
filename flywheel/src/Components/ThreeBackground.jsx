@@ -20,12 +20,16 @@ export default function ThreeBackground() {
       className="absolute inset-0 -z-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: isLoaded ? 1 : 0 }}
-      transition={{ duration: 2, ease: "easeOut" }} // Slow fade-in for a smooth effect
+      transition={{ duration: 2, ease: "easeOut" }} // Original slow fade-in
     >
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5], fov: 50 }}
+        gl={{ antialias: true, powerPreference: "high-performance" }}
+        dpr={[1, 2]}
+      >
         <ambientLight intensity={0.5} />
         <Suspense fallback={null}>
-          {/* The 3D content that needs to load */}
+          {/* Restored original visual assets */}
           <Environment preset="city" />
           <Float speed={5.5} rotationIntensity={0.5} floatIntensity={1.0}>
             <SpinningTorus />
@@ -45,6 +49,7 @@ export default function ThreeBackground() {
 function SpinningTorus() {
   return (
     <mesh>
+      {/* Restored original geometry segments */}
       <torusKnotGeometry args={[1.2, 0.35, 160, 32]} />
       <meshStandardMaterial metalness={0.7} roughness={0.2} color="#ffffff" />
     </mesh>

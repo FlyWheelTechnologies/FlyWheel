@@ -1,17 +1,27 @@
-// components/sections/HomeSection.js
-"use client"; // Required if using Next.js App Router with Framer Motion
-
+import { useState, useEffect } from "react";
 import ThreeBackground from "../Components/ThreeBackground";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HomeSection() {
+  const [count, setCount] = useState(4);
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    if (count > 0) {
+      const timer = setTimeout(() => setCount(count - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      setIsComplete(true);
+    }
+  }, [count]);
+
   // Animation variants for staggering elements
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15, // Delays each child by 0.15s
+        staggerChildren: 0.15,
         delayChildren: 0.2,
       },
     },
@@ -26,17 +36,29 @@ export default function HomeSection() {
     },
   };
 
+  // Typewriting variant for the final text
+  const typingContainer = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+
+  const letterVariant = {
+    hidden: { opacity: 0, display: "none" },
+    visible: { opacity: 1, display: "inline-block" },
+  };
+
+  const finalMessage = "Accepting New Projects";
+
   return (
     <>
       <ThreeBackground />
       
-      {/* Changes: 
-        1. Added distinct gradient overlay (to-b from-transparent to-black) for better text readability at the bottom.
-        2. Added overflow-hidden to prevent scroll issues.
-      */}
       <div className="relative z-10 h-full w-full min-h-screen flex flex-col justify-center overflow-hidden bg-black/40 backdrop-blur-[2px]">
-        
-        {/* Main Container */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -47,19 +69,45 @@ export default function HomeSection() {
           {/* Left Column - Hero Text */}
           <div className="space-y-6 sm:space-y-2 text-center lg:text-left">
             
-            {/* Status Pill - Adds "Startup Credibility" */}
+            {/* Status Pill */}
             <motion.div variants={itemVariants} className="flex justify-center lg:justify-start">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium">
-                <span className="relative flex h-2 w-2">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium min-w-[180px]">
+                <span className="relative flex h-2 w-2 flex-shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
                 </span>
-                Accepting New Projects
+                
+                <AnimatePresence mode="wait">
+                  {!isComplete ? (
+                    <motion.span
+                      key="counting"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="whitespace-nowrap"
+                    >
+                      Checking for backlogs {count}
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="complete"
+                      variants={typingContainer}
+                      initial="hidden"
+                      animate="visible"
+                      className="whitespace-nowrap"
+                    >
+                      {finalMessage.split("").map((char, index) => (
+                        <motion.span key={index} variants={letterVariant}>
+                          {char === " " ? "\u00A0" : char}
+                        </motion.span>
+                      ))}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </span>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-2">
-              {/* Semantic H1 with Gradient Text */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-white">
                 Turn Any Idea <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-amber-600">
@@ -79,7 +127,6 @@ export default function HomeSection() {
           </div>
 
           {/* Right Column - Description & CTAs */}
-          {/* Added a subtle glass card effect behind this text for better readability against complex 3D backgrounds */}
           <motion.div 
             variants={itemVariants}
             className="space-y-1 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-5 backdrop-blur-md shadow-2xl"
@@ -87,9 +134,6 @@ export default function HomeSection() {
             <div className="space-y-4">
               <p className="text-lg sm:text-xl text-white/90 leading-relaxed font-light">
                 We help founders and organizations transform concepts into clean, <span className="text-white font-semibold">production-ready software</span>.
-              </p>
-
-              <p className="text-base text-white/60 leading-relaxed">
               </p>
             </div>
 
@@ -113,7 +157,6 @@ export default function HomeSection() {
               </a>
             </div>
           </motion.div>
-
         </motion.div>
       </div>
     </>
