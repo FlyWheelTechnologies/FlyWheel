@@ -55,7 +55,7 @@ export default function App() {
               ref={el => register(s.id, el)}
               key={s.id}
               id={s.id}
-              className={`snap-start h-screen w-full relative bg-gradient-to-b ${s.bg}`}
+              className={`snap-start min-h-screen w-full relative bg-gradient-to-b ${s.bg}`}
             >
               <SectionComponent />
             </Section>

@@ -150,24 +150,43 @@ export default function WorkSection() {
     return () => window.removeEventListener('keydown', onKey);
   }, [close, active, projects]);
 
+  const carouselRef = useRef(null);
+
+  const handleScroll = (e) => {
+    const { scrollLeft, clientWidth } = e.target;
+    const newSlide = Math.round(scrollLeft / clientWidth);
+    if (newSlide !== currentSlide) {
+      setCurrentSlide(newSlide);
+    }
+  };
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({
+        left: currentSlide * carouselRef.current.clientWidth,
+        behavior: 'smooth'
+      });
+    }
+  }, [currentSlide]);
+
   const nextSlide = () => {
     if (activeProject) {
-      setCurrentSlide(prev => prev < activeProject.slides.length - 1 ? prev + 1 : 0);
+      setCurrentSlide(prev => (prev < activeProject.slides.length - 1 ? prev + 1 : 0));
     }
   };
 
   const prevSlide = () => {
     if (activeProject) {
-      setCurrentSlide(prev => prev > 0 ? prev - 1 : activeProject.slides.length - 1);
+      setCurrentSlide(prev => (prev > 0 ? prev - 1 : activeProject.slides.length - 1));
     }
   };
 
   return (
-    <section className="relative z-10 w-full py-20 lg:py-32 px-4 sm:px-6">
+    <section className="relative z-10 w-full pt-12 pb-24 lg:py-32 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
-        <div className="text-center space-y-4 mb-1">
+        <div className="text-center space-y-2 lg:space-y-4 mb-6 lg:mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -198,7 +217,7 @@ export default function WorkSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               onClick={() => open(project.id)}
-              className="group relative flex flex-col p-6 h-full rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 transition-colors duration-300 text-left overflow-hidden"
+              className="group relative flex flex-col p-5 lg:p-6 h-full rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 transition-colors duration-300 text-left overflow-hidden"
             >
               {/* Hover Gradient Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -231,7 +250,7 @@ export default function WorkSection() {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <p className="relative z-10 text-white/70 text-base lg:text-lg leading-relaxed my-6 flex-grow">
+                      <p className="relative z-10 text-white/70 text-base lg:text-lg leading-relaxed my-4 lg:my-6 flex-grow">
                         {project.preview}
                       </p>
                       <div 
@@ -299,50 +318,48 @@ export default function WorkSection() {
               {/* Scrollable Content Area */}
               <div className="flex-1 overflow-y-auto custom-scrollbar">
                 {/* Carousel Track */}
-                <div className="relative min-h-[400px]">
-                    <motion.div 
-                        animate={{ x: `-${currentSlide * 100}%` }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className="flex h-full"
-                    >
-                        {activeProject.slides.map((slide, index) => (
-                        <div key={index} className="w-full flex-shrink-0 p-8 sm:p-12">
-                            <div className="max-w-2xl mx-auto">
-                                <motion.h3 
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2 }}
-                                    className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-600 mb-6"
-                                >
-                                    {slide.title}
-                                </motion.h3>
-                                
-                                <motion.p 
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.3 }}
-                                    className="text-lg text-white/80 leading-relaxed mb-8"
-                                >
-                                    {slide.content}
-                                </motion.p>
-                                
-                                <motion.div 
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.4 }}
-                                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                                >
-                                    {slide.features.map((feature, idx) => (
-                                    <div key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
-                                        <span className="text-sm font-medium text-white/90">{feature}</span>
-                                    </div>
-                                    ))}
-                                </motion.div>
-                            </div>
+                <div 
+                    ref={carouselRef}
+                    onScroll={handleScroll}
+                    className="flex h-full overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar transition-all duration-300"
+                >
+                    {activeProject.slides.map((slide, index) => (
+                    <div key={index} className="w-full flex-shrink-0 p-8 sm:p-12 snap-start">
+                        <div className="max-w-2xl mx-auto">
+                            <motion.h3 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-600 mb-6"
+                            >
+                                {slide.title}
+                            </motion.h3>
+                            
+                            <motion.p 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="text-lg text-white/80 leading-relaxed mb-8"
+                            >
+                                {slide.content}
+                            </motion.p>
+                            
+                            <motion.div 
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                            >
+                                {slide.features.map((feature, idx) => (
+                                <div key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
+                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+                                    <span className="text-sm font-medium text-white/90">{feature}</span>
+                                </div>
+                                ))}
+                            </motion.div>
                         </div>
-                        ))}
-                    </motion.div>
+                    </div>
+                    ))}
                 </div>
               </div>
 
