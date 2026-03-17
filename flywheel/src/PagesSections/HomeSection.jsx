@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ThreeBackground from "../Components/ThreeBackground";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function HomeSection() {
   const [count, setCount] = useState(4);

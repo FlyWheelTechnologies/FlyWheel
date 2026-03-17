@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 
 export default function AboutSection() {
   const [active, setActive] = useState(null);

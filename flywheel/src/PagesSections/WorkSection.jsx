@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Diet from '../assets/diet.png';
 import RideWellLogo from '../assets/ridewell.png';
 // Make sure to add a placeholder image named autozone.png to your assets folder
