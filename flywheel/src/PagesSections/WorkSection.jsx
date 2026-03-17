@@ -151,33 +151,54 @@ export default function WorkSection() {
   }, [close, active, projects]);
 
   const carouselRef = useRef(null);
+  const isProgrammaticScroll = useRef(false);
+
+  const scrollToSlide = useCallback((index) => {
+    if (carouselRef.current) {
+      isProgrammaticScroll.current = true;
+      const scrollAmount = index * carouselRef.current.clientWidth;
+      carouselRef.current.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+      // Reset the guard after animation roughly finishes
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 500);
+      setCurrentSlide(index);
+    }
+  }, []);
 
   const handleScroll = (e) => {
+    if (isProgrammaticScroll.current) return;
+    
     const { scrollLeft, clientWidth } = e.target;
-    const newSlide = Math.round(scrollLeft / clientWidth);
-    if (newSlide !== currentSlide) {
-      setCurrentSlide(newSlide);
+    if (clientWidth > 0) {
+      const newSlide = Math.round(scrollLeft / clientWidth);
+      if (newSlide !== currentSlide) {
+        setCurrentSlide(newSlide);
+      }
     }
   };
 
+  // Sync scroll on open or resize
   useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollTo({
-        left: currentSlide * carouselRef.current.clientWidth,
-        behavior: 'smooth'
-      });
+    if (active && carouselRef.current) {
+      carouselRef.current.scrollLeft = currentSlide * carouselRef.current.clientWidth;
     }
-  }, [currentSlide]);
+  }, [active, currentSlide]);
 
   const nextSlide = () => {
     if (activeProject) {
-      setCurrentSlide(prev => (prev < activeProject.slides.length - 1 ? prev + 1 : 0));
+      const nextIdx = (currentSlide < activeProject.slides.length - 1 ? currentSlide + 1 : 0);
+      scrollToSlide(nextIdx);
     }
   };
 
   const prevSlide = () => {
     if (activeProject) {
-      setCurrentSlide(prev => (prev > 0 ? prev - 1 : activeProject.slides.length - 1));
+      const prevIdx = (currentSlide > 0 ? currentSlide - 1 : activeProject.slides.length - 1);
+      scrollToSlide(prevIdx);
     }
   };
 
@@ -371,7 +392,7 @@ export default function WorkSection() {
                   {activeProject.slides.map((_, idx) => (
                     <button
                       key={idx}
-                      onClick={() => setCurrentSlide(idx)}
+                      onClick={() => scrollToSlide(idx)}
                       className={`h-1.5 rounded-full transition-all duration-300 ${
                         currentSlide === idx ? 'w-8 bg-orange-500' : 'w-1.5 bg-white/20 hover:bg-white/40'
                       }`}
