@@ -43,7 +43,7 @@ export default function App() {
       {/* Frosted Glass Navbar */}
       <Navbar sections={SECTIONS} activeId={activeId} />
       
-      {/* Snap container: vertical, mandatory snapping */}
+      {/* Snap container: vertical, mandatory snapping added */}
       <main 
         className="h-screen w-full overflow-y-scroll snap-y snap-mandatory edge-fade" 
         aria-label="Fullpage sections"
