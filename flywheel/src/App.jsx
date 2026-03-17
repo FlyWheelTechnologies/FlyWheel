@@ -1,8 +1,8 @@
 // App.js
-import NavDots from "./components/NavDots";
-import Section from "./components/Section";
+import NavDots from "./Components/NavDots";
+import Section from "./Components/Section";
 import Navbar from "./Components/Navbar";
-import { useActiveSection } from "./hooks/useActiveSection";
+import { useActiveSection } from "./Hooks/useActiveSection";
 import HomeSection from "./PagesSections/HomeSection";
 import AboutSection from "./PagesSections/AboutSection";
 import WorkSection from "./PagesSections/WorkSection";
