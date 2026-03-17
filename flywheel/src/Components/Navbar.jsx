@@ -1,6 +1,5 @@
 // components/Navbar.js
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import Logo from '../assets/FlywheelLogo.png'; // Ensure you have a logo image in the specified path
 
 export default function Navbar({ sections, activeId }) {

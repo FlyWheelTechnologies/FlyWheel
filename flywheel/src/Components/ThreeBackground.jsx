@@ -1,7 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, Float } from "@react-three/drei";
 import { Suspense, useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
 // This component's only job is to call the onLoaded callback when it's mounted.
 // It will only mount when the Suspense boundary has resolved.
