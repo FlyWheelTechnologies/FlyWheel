@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Diet from '../assets/diet.png';
 import RideWellLogo from '../assets/ridewell.png';
 // Make sure to add a placeholder image named autozone.png to your assets folder
@@ -21,7 +21,7 @@ export default function WorkSection() {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const projects = [
+  const projects = useMemo(() => [
     {
       id: 'ridewell',
       title: 'RideWell',
@@ -99,7 +99,7 @@ export default function WorkSection() {
         }
       ]
     }
-  ];
+  ], []);
 
   const activeProject = projects.find((p) => p.id === active);
 

@@ -32,12 +32,13 @@ threshold: 0.6,
 }, []);
 
 
-useEffect(() => {
-if (!observer) return;
-const els = ids.map(id => elementsRef.current.get(id)).filter(Boolean);
-els.forEach(el => observer.observe(el));
-return () => els.forEach(el => observer.unobserve(el));
-}, [observer, ids.join("|")]);
+  const idsString = ids.join("|");
+  useEffect(() => {
+    if (!observer) return;
+    const els = ids.map(id => elementsRef.current.get(id)).filter(Boolean);
+    els.forEach(el => observer.observe(el));
+    return () => els.forEach(el => observer.unobserve(el));
+  }, [observer, ids, idsString]);
 
 
 return { activeId, register };
