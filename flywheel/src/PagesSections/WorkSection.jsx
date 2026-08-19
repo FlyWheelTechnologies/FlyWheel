@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Diet from '../assets/diet.png';
-import RideWellLogo from '../assets/ridewell.png';
+import StoreFlowLogo from '../assets/storeflow.png';
 // Make sure to add a placeholder image named autozone.png to your assets folder
 import Autozone from '../assets/autozone.jpg'; 
 
@@ -23,27 +23,28 @@ export default function WorkSection() {
 
   const projects = useMemo(() => [
     {
-      id: 'ridewell',
-      title: 'RideWell',
-      preview: 'Route planning and Tracking app for efficient city navigation.',
-      logo: RideWellLogo,
+      id: 'storeflow',
+      title: 'StoreFlow by Flywheel',
+      preview: 'Multi-tenant stock management & accounting SaaS platform built for seamless business scalability.',
+      logo: StoreFlowLogo,
+      siteUrl: 'https://storeflow-by-flywheel.pages.dev/',
       status: 'Live',
-      year: '2024',
+      year: '2026',
       slides: [
         {
-          title: 'Efficient Urban Navigation',
-          content: 'RideWell is a route planning app that helps you navigate your city efficiently using real-time data on public transport, taxis, and minibuses. It allows users to find the most efficient routes, locate nearby bus stops, and identify transfer points.',
-          features: ['Real-Time Data', 'Efficient Route Planning', 'Nearby Stop Locator', 'Transfer Points']
+          title: 'Multi-Tenant Architecture & Data Isolation',
+          content: 'StoreFlow is a comprehensive multi-tenant Stock Management & Accounting SaaS platform built to power diverse business organizations. Multi-tenancy is enforced at the database layer via PostgreSQL Row-Level Security (RLS), guaranteeing absolute data isolation between tenants.',
+          features: ['Multi-Tenant RLS', 'Tenant Isolation', 'Super Admin Override', 'Custom Organization Branding']
         },
         {
-          title: 'Live Location & Ride-Sharing',
-          content: 'Passengers can share their live location with other users in real-time. This enables commuters to identify available vehicles heading in their direction, improving ride-sharing opportunities.',
-          features: ['Live Location Sharing', 'Vehicle Tracking', 'Ride-Sharing', 'Community Commuting']
+          title: 'Role-Based Control & Automated Operations',
+          content: 'Features Role-Based Access Control (RBAC) across Super Admin, Admin, Storekeeper, and Auditor roles. Powered by Deno Edge Functions for serverless execution including email staff invitations, automated receipt sending, and instant low-stock notifications.',
+          features: ['RBAC Permissions', 'Serverless Edge Functions', 'Transactional PDF Receipts', 'Low-Stock Alerts']
         },
         {
-          title: 'Technical Stack & Scalability',
-          content: 'Built with a robust and scalable architecture to ensure a seamless experience for a large user base, capable of handling over 1000 concurrent users and real-time data processing effectively.',
-          features: ['Flutter Framework', 'MongoDB Database', 'Google Maps Integration', 'High Concurrency']
+          title: 'Modern Technical Stack & Customization',
+          content: 'Engineered as a decoupled React Single Page Application (Vite) powered by Supabase. Supports multi-currency transactions, dynamic CSS brand accent colors per organization, and instant super-admin organization impersonation.',
+          features: ['React + Vite SPA', 'Supabase & PostgreSQL', 'Multi-Currency Support', 'Super Admin Impersonation']
         }
       ]
     },
