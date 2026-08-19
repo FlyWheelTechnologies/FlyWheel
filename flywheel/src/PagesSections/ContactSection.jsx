@@ -12,7 +12,7 @@ export default function ContactSection() {
         {/* Contact methods */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-20">
           <a 
-            href="mailto:princetetteh963@gmail.com"
+            href="mailto:flywheeltechnologies2025@gmail.com"
             className="inline-flex items-center gap-2 rounded-2xl px-6 py-3 bg-teal-600/20 hover:bg-teal-600/30 ring-1 ring-teal-400/20 backdrop-blur transition-colors"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
