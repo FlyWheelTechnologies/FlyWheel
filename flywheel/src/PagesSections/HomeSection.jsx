@@ -3,7 +3,7 @@ import ThreeBackground from "../Components/ThreeBackground";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function HomeSection() {
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(3);
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {

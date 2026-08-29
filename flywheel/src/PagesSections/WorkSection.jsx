@@ -25,26 +25,26 @@ export default function WorkSection() {
     {
       id: 'storeflow',
       title: 'StoreFlow by Flywheel',
-      preview: 'Multi-tenant stock management & accounting SaaS platform built for seamless business scalability.',
+      preview: 'Stock management & accounting platform that keeps every business\'s data secure and completely separate.',
       logo: StoreFlowLogo,
       siteUrl: 'https://storeflow-by-flywheel.pages.dev/',
       status: 'Live',
       year: '2026',
       slides: [
         {
-          title: 'Multi-Tenant Architecture & Data Isolation',
-          content: 'StoreFlow is a comprehensive multi-tenant Stock Management & Accounting SaaS platform built to power diverse business organizations. Multi-tenancy is enforced at the database layer via PostgreSQL Row-Level Security (RLS), guaranteeing absolute data isolation between tenants.',
-          features: ['Multi-Tenant RLS', 'Tenant Isolation', 'Super Admin Override', 'Custom Organization Branding']
+          title: 'One Platform, Many Businesses',
+          content: 'StoreFlow keeps every business\'s data completely separate and secure — each organisation sees only their own inventory, sales, and reports, with zero risk of cross-contamination. Super admins get a bird\'s-eye view across all tenants, and every organisation can customise their own branding.',
+          features: ['Separate Data Per Business', 'Secure Organisation Walls', 'Master Admin Access', 'Custom Branding']
         },
         {
-          title: 'Role-Based Control & Automated Operations',
-          content: 'Features Role-Based Access Control (RBAC) across Super Admin, Admin, Storekeeper, and Auditor roles. Powered by Deno Edge Functions for serverless execution including email staff invitations, automated receipt sending, and instant low-stock notifications.',
-          features: ['RBAC Permissions', 'Serverless Edge Functions', 'Transactional PDF Receipts', 'Low-Stock Alerts']
+          title: 'Smart Automation & Access Control',
+          content: 'Assign roles like Admin, Storekeeper, or Auditor so everyone sees only what they need. The platform automates the busywork — staff get invited by email, customers receive receipts instantly, and managers get notified the moment stock runs low.',
+          features: ['Role-Based Access', 'Automated Workflows', 'Instant PDF Receipts', 'Low-Stock Alerts']
         },
         {
-          title: 'Modern Technical Stack & Customization',
-          content: 'Engineered as a decoupled React Single Page Application (Vite) powered by Supabase. Supports multi-currency transactions, dynamic CSS brand accent colors per organization, and instant super-admin organization impersonation.',
-          features: ['React + Vite SPA', 'Supabase & PostgreSQL', 'Multi-Currency Support', 'Super Admin Impersonation']
+          title: 'Fast, Modern & Flexible',
+          content: 'Built with a fast, modern tech stack so pages load instantly. Supports multiple currencies, lets each organisation customise their branding, and gives super-admins a bird\'s-eye view across all tenants.',
+          features: ['Fast Single-Page App', 'Cloud Database', 'Multi-Currency Support', 'Admin Quick-Switch']
         }
       ]
     },
@@ -239,18 +239,18 @@ export default function WorkSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               onClick={() => open(project.id)}
-              className="group relative flex flex-col p-5 lg:p-6 h-full rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 transition-colors duration-300 text-left overflow-hidden"
+              className="group relative flex flex-col p-4 lg:p-6 h-full rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 transition-colors duration-300 text-left overflow-hidden"
             >
               {/* Hover Gradient Glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative z-10 flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0 p-3 rounded-xl bg-black/40 border border-white/10 h-16 w-16 flex items-center justify-center">
+                <div className="flex-shrink-0 p-2 sm:p-3 rounded-xl bg-black/40 border border-white/10 h-12 w-12 sm:h-16 sm:w-16 flex items-center justify-center">
                    {/* Used object-contain to ensure logos fit nicely */}
                    <img src={project.logo} alt={project.title} className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">{project.title}</h3>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">{project.title}</h3>
                   <div className="flex items-center gap-2 mt-1">
                     <span className={`flex h-2 w-2 rounded-full ${
                         project.status === 'Live' 
@@ -272,7 +272,7 @@ export default function WorkSection() {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <p className="relative z-10 text-white/70 text-base lg:text-lg leading-relaxed my-4 lg:my-6 flex-grow">
+                      <p className="relative z-10 text-white/70 text-sm sm:text-base lg:text-lg leading-relaxed my-3 lg:my-6 flex-grow">
                         {project.preview}
                       </p>
                       <div 
@@ -293,6 +293,26 @@ export default function WorkSection() {
             </motion.button>
           ))}
         </div>
+
+        {/* CTA below projects */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-10 lg:mt-16 text-center"
+        >
+          <p className="text-white/50 text-base sm:text-lg mb-4">
+            Like what you see? We've shipped more — let's talk about yours.
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 hover:border-orange-500/50 text-orange-400 font-semibold transition-all duration-300 hover:-translate-y-0.5"
+          >
+            Get In Touch
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </a>
+        </motion.div>
       </div>
 
       {/* Modal with AnimatePresence for smooth entry/exit */}
