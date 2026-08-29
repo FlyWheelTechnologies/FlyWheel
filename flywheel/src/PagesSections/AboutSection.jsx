@@ -77,7 +77,7 @@ export default function AboutSection() {
         className="max-w-2xl space-y-4"
       >
         <p className="text-lg sm:text-2xl text-white/80">
-          Flywheel Technologies is an innovation hub building AI-powered solutions for ambitious founders and SMEs, modernizing traditional business operations. We help organisations digitize processes, manage data and branding. Providing scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive growth
+          Flywheel Technologies is an innovative digital solutions provider for ambitious founders and businesses, modernizing traditional business operations. We help organisations digitize processes, manage data and branding. While providing scalable, cost-effective software that is simple enough for non-technical users while powerful enough to streamline operations and drive growth
         </p>
       </motion.div>
 
@@ -171,27 +171,6 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-
-          {/* Subtle scale/press cue like iOS long-press */}
-          <style jsx>{`
-            @media (prefers-reduced-motion: no-preference) {
-              [role='dialog'] [data-state='open'] {
-                animation: modal-in 180ms ease-out forwards;
-              }
-              @keyframes modal-in {
-                from {
-                  opacity: 0;
-                  transform: translateY(6px) scale(0.96);
-                  filter: saturate(0.9);
-                }
-                to {
-                  opacity: 1;
-                  transform: translateY(0) scale(1);
-                  filter: saturate(1);
-                }
-              }
-            }
-          `}</style>
         </div>
       )}
     </div>

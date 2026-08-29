@@ -1,10 +1,8 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Environment, Float } from "@react-three/drei";
+import { OrbitControls, Float } from "@react-three/drei";
 import { Suspense, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-// This component's only job is to call the onLoaded callback when it's mounted.
-// It will only mount when the Suspense boundary has resolved.
 function OnLoaded({ onLoaded }) {
   useEffect(() => {
     onLoaded();
@@ -20,22 +18,23 @@ export default function ThreeBackground() {
       className="absolute inset-0 -z-0"
       initial={{ opacity: 0 }}
       animate={{ opacity: isLoaded ? 1 : 0 }}
-      transition={{ duration: 2, ease: "easeOut" }} // Original slow fade-in
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <Canvas 
         camera={{ position: [0, 0, 5], fov: 50 }}
         gl={{ antialias: true, powerPreference: "high-performance" }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
-        <ambientLight intensity={0.5} />
+        {/* Balanced studio lighting for rich metallic reflections without external network downloads */}
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[10, 10, 5]} intensity={2.0} color="#ffffff" />
+        <directionalLight position={[-10, -5, -5]} intensity={1.2} color="#fb923c" />
+        <pointLight position={[0, -5, 5]} intensity={0.8} color="#94a3b8" />
+        
         <Suspense fallback={null}>
-          {/* Restored original visual assets */}
-          <Environment preset="city" />
           <Float speed={5.5} rotationIntensity={0.5} floatIntensity={1.0}>
             <SpinningTorus />
           </Float>
-
-          {/* This component signals that loading is complete */}
           <OnLoaded onLoaded={() => setIsLoaded(true)} />
         </Suspense>
         <OrbitControls enableZoom={false} enablePan={false} />
@@ -49,9 +48,9 @@ export default function ThreeBackground() {
 function SpinningTorus() {
   return (
     <mesh>
-      {/* Restored original geometry segments */}
-      <torusKnotGeometry args={[1.2, 0.35, 160, 32]} />
-      <meshStandardMaterial metalness={0.7} roughness={0.2} color="#ffffff" />
+      {/* Optimized segment count: smooth visual quality with ~40% fewer vertices */}
+      <torusKnotGeometry args={[1.2, 0.35, 120, 28]} />
+      <meshStandardMaterial metalness={0.75} roughness={0.25} color="#ffffff" />
     </mesh>
   );
 }
