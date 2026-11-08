@@ -27,7 +27,7 @@ export default function WorkSection() {
       title: 'StoreFlow by Flywheel',
       preview: 'Stock management & accounting platform that keeps every business\'s data secure and completely separate.',
       logo: StoreFlowLogo,
-      siteUrl: 'https://storeflow-by-flywheel.pages.dev/',
+      siteUrl: 'https://storeflow.bookflywheel.com',
       status: 'Live',
       year: '2026',
       slides: [
